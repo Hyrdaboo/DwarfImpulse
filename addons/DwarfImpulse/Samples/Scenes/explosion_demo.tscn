@@ -1,0 +1,270 @@
+[gd_scene load_steps=36 format=3 uid="uid://b81xqbjcwtt3m"]
+
+[ext_resource type="Texture2D" uid="uid://ci733dbufcs7t" path="res://addons/DwarfImpulse/Textures/kenney_prototype-textures/PNG/Dark/texture_01.png" id="1_c4ukf"]
+[ext_resource type="Texture2D" uid="uid://day73bk5dkbam" path="res://addons/DwarfImpulse/Textures/dust_transparent.png" id="2_hp5n6"]
+[ext_resource type="Texture2D" uid="uid://efkvg466wc28" path="res://addons/DwarfImpulse/Textures/kenney_prototype-textures/PNG/Orange/texture_01.png" id="3_5h3ha"]
+[ext_resource type="Texture2D" uid="uid://bv1krqeombkvl" path="res://addons/DwarfImpulse/Textures/kenney_prototype-textures/PNG/Green/texture_01.png" id="4_71de4"]
+[ext_resource type="Texture2D" uid="uid://codjt5rq48oxy" path="res://addons/DwarfImpulse/Textures/kenney_prototype-textures/PNG/Purple/texture_01.png" id="5_ayq41"]
+[ext_resource type="Script" path="res://addons/DwarfImpulse/Samples/Scripts/ExplosionController.cs" id="6_nwy5v"]
+[ext_resource type="Script" path="res://addons/DwarfImpulse/Runtime/ShakeDirector3D.cs" id="6_tmkko"]
+[ext_resource type="AudioStream" uid="uid://c30m0m5mtuhxs" path="res://addons/DwarfImpulse/Samples/sfx/explosion.mp3" id="7_aklov"]
+
+[sub_resource type="Environment" id="Environment_78t7w"]
+background_mode = 1
+background_color = Color(0.105882, 0.105882, 0.105882, 1)
+tonemap_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.0
+glow_blend_mode = 1
+fog_enabled = true
+fog_light_color = Color(0.141176, 0.141176, 0.141176, 1)
+fog_density = 0.0862
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ln6oo"]
+albedo_texture = ExtResource("1_c4ukf")
+albedo_texture_force_srgb = true
+uv1_scale = Vector3(100, 100, 100)
+texture_filter = 5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7vlwg"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_80cmd"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dd6xs"]
+albedo_texture = ExtResource("3_5h3ha")
+albedo_texture_force_srgb = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_kmh64"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sr3ly"]
+size = Vector3(1.5, 1.5, 1.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_smdfj"]
+albedo_texture = ExtResource("4_71de4")
+albedo_texture_force_srgb = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_blv1w"]
+size = Vector3(1.5, 1.5, 1.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gc8ti"]
+albedo_texture = ExtResource("5_ayq41")
+albedo_texture_force_srgb = true
+uv1_offset = Vector3(0, 0.5, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_enwxf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nq2dj"]
+size = Vector3(0.6, 0.6, 0.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ibyka"]
+size = Vector3(0.6, 0.6, 0.6)
+
+[sub_resource type="Curve" id="Curve_e4prt"]
+_data = [Vector2(0, 0), 0.0, 3.74911, 0, 0, Vector2(1e-05, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.0170062, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_8oamq"]
+curve = SubResource("Curve_e4prt")
+
+[sub_resource type="Curve" id="Curve_dgnow"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 164.377), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_c3eco"]
+curve = SubResource("Curve_dgnow")
+
+[sub_resource type="Gradient" id="Gradient_588q6"]
+offsets = PackedFloat32Array(0.0266667, 0.1, 0.733333, 0.886667)
+colors = PackedColorArray(1, 0.76, 0.68, 1, 1, 0.25, 0, 1, 0.04, 0.01, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vc53h"]
+gradient = SubResource("Gradient_588q6")
+
+[sub_resource type="Curve" id="Curve_l6e20"]
+_data = [Vector2(0, 1), 0.0, -13.0875, 0, 1, Vector2(0.0680473, 0.109434), -0.13426, -0.13426, 0, 0, Vector2(1, 0), -0.0161451, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_t6su0"]
+curve_y = SubResource("Curve_l6e20")
+
+[sub_resource type="Curve" id="Curve_kkp3w"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.127219, 0.924528), 2.95372, 0.332732, 0, 0, Vector2(0.600592, 1), 0.0, 0.0, 0, 0, Vector2(0.991124, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_2cp6y"]
+curve = SubResource("Curve_kkp3w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k4xsd"]
+lifetime_randomness = 0.35
+emission_shape = 1
+emission_sphere_radius = 3.0
+angle_min = -2.0
+angle_max = 2.0
+angle_curve = SubResource("CurveTexture_c3eco")
+directional_velocity_min = 15.0
+directional_velocity_max = 15.0
+directional_velocity_curve = SubResource("CurveXYZTexture_t6su0")
+gravity = Vector3(0, 0, 0)
+tangential_accel_min = 0.35
+tangential_accel_max = 1.2
+scale_min = 0.52
+scale_max = 0.77
+scale_curve = SubResource("CurveTexture_2cp6y")
+color_ramp = SubResource("GradientTexture1D_vc53h")
+alpha_curve = SubResource("CurveTexture_8oamq")
+hue_variation_min = -0.01
+hue_variation_max = 0.04
+turbulence_noise_strength = 10.8
+turbulence_noise_scale = 5.0
+turbulence_noise_speed = Vector3(0, 5, 0)
+turbulence_noise_speed_random = 1.0
+turbulence_initial_displacement_min = 0.2
+turbulence_initial_displacement_max = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43dlu"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+disable_fog = true
+vertex_color_use_as_albedo = true
+albedo_color = Color(2, 2, 2, 1)
+albedo_texture = ExtResource("2_hp5n6")
+disable_receive_shadows = true
+shadow_to_opacity = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+proximity_fade_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_u0e8u"]
+material = SubResource("StandardMaterial3D_43dlu")
+orientation = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4bnsg"]
+seed = 55
+fractal_octaves = 3
+
+[node name="ExplosionDemo" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_78t7w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0.5, 0)
+material_override = SubResource("StandardMaterial3D_ln6oo")
+mesh = SubResource("PlaneMesh_7vlwg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_80cmd")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.524201, 5.31189, 1.09841)
+light_energy = 3.0
+shadow_enabled = true
+omni_range = 18.2353
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 2)
+fov = 65.0
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
+current = true
+
+[node name="Cube1" type="RigidBody3D" parent="."]
+mass = 7.5
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Cube1"]
+transform = Transform3D(0.475957, 0, -1.42249, 0, 1.5, 0, 1.42249, 0, 0.475957, 2.209, 1.2912, -3.404)
+material_override = SubResource("StandardMaterial3D_dd6xs")
+mesh = SubResource("BoxMesh_kmh64")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube1"]
+transform = Transform3D(0.317305, 0, -0.948324, 0, 1, 0, 0.948324, 0, 0.317305, 2.209, 1.2912, -3.404)
+shape = SubResource("BoxShape3D_sr3ly")
+
+[node name="Cube2" type="RigidBody3D" parent="."]
+mass = 7.5
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Cube2"]
+transform = Transform3D(0.475957, 0, 1.42249, 0, 1.5, 0, -1.42249, 0, 0.475957, -2.046, 1.31399, -3.404)
+material_override = SubResource("StandardMaterial3D_smdfj")
+mesh = SubResource("BoxMesh_kmh64")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube2"]
+transform = Transform3D(0.317305, 0, 0.948324, 0, 1, 0, -0.948324, 0, 0.317305, -2.046, 1.31399, -3.404)
+shape = SubResource("BoxShape3D_blv1w")
+
+[node name="Cube3" type="RigidBody3D" parent="."]
+mass = 5.0
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Cube3"]
+transform = Transform3D(-0.239544, 0.35734, 0.418242, 0.0120316, 0.459469, -0.385673, -0.549976, -0.145589, -0.190604, -0.659, 1.079, -2.283)
+material_override = SubResource("StandardMaterial3D_gc8ti")
+mesh = SubResource("BoxMesh_enwxf")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube3"]
+transform = Transform3D(-0.39924, 0.595567, 0.697071, 0.0200527, 0.765782, -0.642788, -0.916627, -0.242648, -0.317673, -0.659, 1.079, -2.283)
+shape = SubResource("BoxShape3D_nq2dj")
+
+[node name="Cube4" type="RigidBody3D" parent="."]
+mass = 5.0
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Cube4"]
+transform = Transform3D(-0.34205, -0.260912, 0.418242, -0.459347, -0.0160407, -0.385673, 0.178893, -0.540062, -0.190604, 0.696, 1.079, -2.283)
+material_override = SubResource("StandardMaterial3D_gc8ti")
+mesh = SubResource("BoxMesh_enwxf")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube4"]
+transform = Transform3D(-0.570083, -0.434854, 0.697071, -0.765578, -0.0267345, -0.642788, 0.298154, -0.900104, -0.317673, 0.696, 1.079, -2.283)
+shape = SubResource("BoxShape3D_ibyka")
+
+[node name="ExplosionFX" type="GPUParticles3D" parent="." node_paths=PackedStringArray("shakeDirector", "explosionLight", "audioPlayer", "bodies")]
+transform = Transform3D(1.355, 0, 0, 0, 1.355, 0, 0, 0, 1.355, -0.243176, 2.56628, -8.92406)
+emitting = false
+amount = 350
+lifetime = 2.5
+one_shot = true
+explosiveness = 1.0
+visibility_aabb = AABB(-4, -6.5428, -4, 8, 13.0856, 8)
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_k4xsd")
+draw_pass_1 = SubResource("PlaneMesh_u0e8u")
+script = ExtResource("6_nwy5v")
+shakeDirector = NodePath("../ShakeDirector3D")
+explosionLight = NodePath("OmniLight3D")
+audioPlayer = NodePath("AudioStreamPlayer3D")
+bodies = [NodePath("../Cube1"), NodePath("../Cube2"), NodePath("../Cube3"), NodePath("../Cube4")]
+forceStrength = 500.0
+noise = SubResource("FastNoiseLite_4bnsg")
+shakeRotationAmount = Vector3(0.04, 0, 0.03)
+sustain = 2.0
+decay = 0.695
+
+[node name="OmniLight3D" type="OmniLight3D" parent="ExplosionFX"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58189, 2.44438)
+visible = false
+light_color = Color(1, 0.976471, 0.764706, 1)
+light_energy = 16.0
+shadow_enabled = true
+omni_range = 15.68
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="ExplosionFX"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.06453)
+stream = ExtResource("7_aklov")
+
+[node name="ShakeDirector3D" type="Node3D" parent="." node_paths=PackedStringArray("Target")]
+script = ExtResource("6_tmkko")
+Target = NodePath("../Camera3D")
+AmplitudeOverride = 0.7
