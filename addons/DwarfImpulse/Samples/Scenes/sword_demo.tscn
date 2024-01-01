@@ -1,8 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://4mpqywuauvi8"]
+[gd_scene load_steps=12 format=3 uid="uid://4mpqywuauvi8"]
 
 [ext_resource type="Texture2D" uid="uid://ci733dbufcs7t" path="res://addons/DwarfImpulse/Textures/kenney_prototype-textures/PNG/Dark/texture_01.png" id="1_8ftee"]
 [ext_resource type="Script" path="res://addons/DwarfImpulse/Samples/Scripts/PlayerController.cs" id="2_wfrpp"]
+[ext_resource type="PackedScene" uid="uid://cxjfm0xgrbkbh" path="res://addons/DwarfImpulse/Samples/Prefabs/Hand/hand.tscn" id="3_adkco"]
 [ext_resource type="Script" path="res://addons/DwarfImpulse/Runtime/ShakeDirector3D.cs" id="3_qnxxa"]
+[ext_resource type="Script" path="res://addons/DwarfImpulse/Samples/Scripts/HandController.cs" id="4_54r5p"]
+[ext_resource type="AudioStream" uid="uid://dfnb4eo4loyef" path="res://addons/DwarfImpulse/Samples/sfx/swing.wav" id="5_s1dtj"]
 
 [sub_resource type="Environment" id="Environment_plutb"]
 background_mode = 1
@@ -58,11 +61,23 @@ shape = SubResource("CapsuleShape3D_s7kgq")
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+current = true
+fov = 50.0
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Player/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-current = true
 
-[node name="ShakeDirector3D" type="Node3D" parent="Player"]
+[node name="Hand" parent="Player/Camera3D" node_paths=PackedStringArray("shakeDirector", "audioPlayer") instance=ExtResource("3_adkco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.26, 0)
+script = ExtResource("4_54r5p")
+shakeDirector = NodePath("../../ShakeDirector3D")
+audioPlayer = NodePath("AudioStreamPlayer")
+shakeDir = Vector3(-1, -1, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player/Camera3D/Hand"]
+stream = ExtResource("5_s1dtj")
+
+[node name="ShakeDirector3D" type="Node3D" parent="Player" node_paths=PackedStringArray("Target")]
 script = ExtResource("3_qnxxa")
+Target = NodePath("../Camera3D")
 AmplitudeOverride = 2.0

@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://cxjfm0xgrbkbh"]
+
+[ext_resource type="PackedScene" uid="uid://d4e8mynfd028l" path="res://addons/DwarfImpulse/Samples/Prefabs/Hand/Hand.glb" id="1_c4ly5"]
+[ext_resource type="Texture2D" uid="uid://dsgq3saljl2jj" path="res://addons/DwarfImpulse/Samples/Prefabs/Hand/Hand_Remy_Body_Diffuse.png" id="2_miryi"]
+[ext_resource type="Texture2D" uid="uid://bqhsknecm0qnb" path="res://addons/DwarfImpulse/Samples/Prefabs/Hand/Hand_LongSword-BaseColor.png" id="2_wy341"]
+[ext_resource type="Texture2D" uid="uid://b66pdybelxjeo" path="res://addons/DwarfImpulse/Samples/Prefabs/Hand/Hand_LSword-Metallic.png" id="3_0vna2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_11nce"]
+albedo_texture = ExtResource("2_wy341")
+metallic = 1.0
+metallic_texture = ExtResource("3_0vna2")
+roughness = 0.53
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b3xvg"]
+albedo_texture = ExtResource("2_miryi")
+metallic = 1.0
+
+[node name="Hand" instance=ExtResource("1_c4ly5")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(-0.0999384, 1.04608, -0.0755097)
+bones/0/rotation = Quaternion(-0.517534, -0.643046, 0.0027263, -0.564484)
+bones/1/position = Vector3(9.06382e-05, 0.558427, -1.86862e-05)
+bones/1/rotation = Quaternion(0.115169, -0.118732, 0.036761, 0.985539)
+bones/2/position = Vector3(8.02089e-05, 0.503144, 2.79619e-05)
+bones/2/rotation = Quaternion(-7.45131e-09, -5.35846e-05, 9.07104e-08, 1)
+bones/3/position = Vector3(4.23867e-05, 0.260657, -9.66355e-06)
+bones/3/rotation = Quaternion(0.623248, -1.07179e-08, -1.57849e-08, 0.782025)
+bones/4/position = Vector3(0.0046047, 0.06159, -4.35874e-06)
+bones/4/rotation = Quaternion(0.686226, 1.30485e-07, 1.67815e-08, 0.727388)
+bones/5/position = Vector3(1.19193e-05, 0.0727978, 1.14961e-05)
+bones/5/rotation = Quaternion(0.643443, 0.033634, 0.00803939, 0.764713)
+bones/6/position = Vector3(1.10387e-05, 0.0745888, -6.95154e-06)
+bones/7/position = Vector3(0.0614263, 0.10446, 0.0222756)
+bones/7/rotation = Quaternion(0.250014, 0.0210523, -0.0648826, 0.965836)
+bones/8/rotation = Quaternion(-0.0155793, 0.0569757, 0.263298, 0.962905)
+bones/9/position = Vector3(-0.00068086, 0.0848041, -0.00510363)
+bones/9/rotation = Quaternion(-0.0594941, 0.114454, 0.457397, 0.879857)
+bones/11/position = Vector3(0.0511093, 0.266019, 0.00544693)
+bones/11/rotation = Quaternion(0.472146, -2.14077e-08, -6.03114e-08, 0.881521)
+bones/12/position = Vector3(1.02816e-05, 0.075662, 0.00253102)
+bones/12/rotation = Quaternion(0.8559, 9.3336e-08, 3.14778e-08, 0.517142)
+bones/13/position = Vector3(1.19321e-05, 0.0741473, -7.09284e-06)
+bones/13/rotation = Quaternion(0.288925, -2.58684e-08, 1.17711e-08, 0.957352)
+bones/14/position = Vector3(9.77141e-06, 0.0552136, -6.8656e-06)
+bones/15/position = Vector3(-0.0397997, 0.240882, -4.36475e-06)
+bones/15/rotation = Quaternion(0.646409, 7.61477e-08, 7.44319e-08, 0.762991)
+bones/16/rotation = Quaternion(0.67334, -1.0259e-07, -5.70441e-08, 0.739333)
+bones/17/position = Vector3(1.06627e-05, 0.0683547, -5.38397e-06)
+bones/17/rotation = Quaternion(0.727452, 2.63346e-07, -4.89781e-08, 0.686159)
+bones/19/position = Vector3(-0.0853778, 0.209907, 0.00498151)
+bones/19/rotation = Quaternion(0.384824, -0.00390916, 0.015687, 0.922849)
+bones/20/rotation = Quaternion(0.631276, 0.0279592, -0.130171, 0.764045)
+bones/21/position = Vector3(6.16293e-06, 0.0376654, -3.92831e-06)
+bones/21/rotation = Quaternion(0.46414, 1.50907e-07, -2.70372e-07, 0.885762)
+bones/23/rotation = Quaternion(0.35286, 0.611573, -0.44814, 0.548305)
+bones/23/scale = Vector3(1, 1, 1)
+
+[node name="LongSword" parent="Armature/Skeleton3D" index="0"]
+transform = Transform3D(-0.583651, 0.54186, -0.604763, 0.710677, 0.701153, -0.0576433, 0.392797, -0.463435, -0.794316, 0.555982, 1.08239, -0.454813)
+
+[node name="LongSword" parent="Armature/Skeleton3D/LongSword" index="0"]
+transform = Transform3D(1, 0, -2.98023e-08, 2.98023e-08, 1, 5.96046e-08, -2.98023e-08, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_11nce")
+cast_shadow = 0
+
+[node name="Body" parent="Armature/Skeleton3D" index="1"]
+material_override = SubResource("StandardMaterial3D_b3xvg")
+cast_shadow = 0
