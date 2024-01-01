@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://b132qtxala7j3"]
+
+[ext_resource type="Texture2D" uid="uid://ci733dbufcs7t" path="res://addons/DwarfImpulse/Textures/kenney_prototype-textures/PNG/Dark/texture_01.png" id="1_xihkv"]
+[ext_resource type="PackedScene" uid="uid://cmgr5egighcds" path="res://addons/DwarfImpulse/Samples/Prefabs/player.tscn" id="2_jr4dc"]
+[ext_resource type="PackedScene" uid="uid://d08kennu2nqkn" path="res://addons/DwarfImpulse/Samples/Prefabs/Colossal Titan/colossal_titan.tscn" id="3_xjyjm"]
+
+[sub_resource type="Environment" id="Environment_4kec2"]
+background_mode = 1
+background_color = Color(0.105882, 0.105882, 0.105882, 1)
+tonemap_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.0
+glow_blend_mode = 1
+fog_enabled = true
+fog_light_color = Color(0.141176, 0.141176, 0.141176, 1)
+fog_density = 0.0577
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lxu2y"]
+albedo_texture = ExtResource("1_xihkv")
+albedo_texture_force_srgb = true
+uv1_scale = Vector3(1000, 1000, 1000)
+texture_filter = 5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fvqns"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_n2rpv"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[node name="TitanDemo" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_energy = 2.0
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4kec2")
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, 0.5, 0)
+material_override = SubResource("StandardMaterial3D_lxu2y")
+mesh = SubResource("PlaneMesh_fvqns")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_n2rpv")
+
+[node name="Player" parent="." instance=ExtResource("2_jr4dc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.80953, 0)
+
+[node name="Colossal Titan" parent="." instance=ExtResource("3_xjyjm")]
+transform = Transform3D(-37, 0, -3.23464e-06, 0, 37, 0, 3.23464e-06, 0, -37, -10.407, 0.5, 200)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 12
+text = "Titan model by: sketchfab.com/Sidaivan"

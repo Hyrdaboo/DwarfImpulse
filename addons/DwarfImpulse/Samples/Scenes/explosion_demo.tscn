@@ -155,14 +155,14 @@ fractal_octaves = 3
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_78t7w")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Ground" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0.5, 0)
 material_override = SubResource("StandardMaterial3D_ln6oo")
 mesh = SubResource("PlaneMesh_7vlwg")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_80cmd")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
@@ -246,7 +246,7 @@ shakeDirector = NodePath("../ShakeDirector3D")
 explosionLight = NodePath("OmniLight3D")
 audioPlayer = NodePath("AudioStreamPlayer3D")
 bodies = [NodePath("../Cube1"), NodePath("../Cube2"), NodePath("../Cube3"), NodePath("../Cube4")]
-forceStrength = 500.0
+forceStrength = 750.0
 noise = SubResource("FastNoiseLite_4bnsg")
 shakeRotationAmount = Vector3(0.04, 0, 0.03)
 sustain = 2.0
@@ -268,3 +268,20 @@ stream = ExtResource("7_aklov")
 script = ExtResource("6_tmkko")
 Target = NodePath("../Camera3D")
 AmplitudeOverride = 0.7
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -35.715
+offset_right = 100.0
+offset_bottom = -12.715
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+text = "Press [SPACE] to detonate"
