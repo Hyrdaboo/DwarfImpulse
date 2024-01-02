@@ -147,7 +147,7 @@ material = SubResource("StandardMaterial3D_43dlu")
 orientation = 2
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4bnsg"]
-seed = 55
+seed = 305
 fractal_octaves = 3
 
 [node name="ExplosionDemo" type="Node3D"]
@@ -248,9 +248,8 @@ audioPlayer = NodePath("AudioStreamPlayer3D")
 bodies = [NodePath("../Cube1"), NodePath("../Cube2"), NodePath("../Cube3"), NodePath("../Cube4")]
 forceStrength = 750.0
 noise = SubResource("FastNoiseLite_4bnsg")
-shakeRotationAmount = Vector3(0.04, 0, 0.03)
+shakeRotationAmount = Vector3(0.04, 0, 0.02)
 sustain = 2.0
-decay = 0.695
 
 [node name="OmniLight3D" type="OmniLight3D" parent="ExplosionFX"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58189, 2.44438)
@@ -267,7 +266,6 @@ stream = ExtResource("7_aklov")
 [node name="ShakeDirector3D" type="Node3D" parent="." node_paths=PackedStringArray("Target")]
 script = ExtResource("6_tmkko")
 Target = NodePath("../Camera3D")
-AmplitudeOverride = 0.7
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -2,6 +2,9 @@
 
 namespace DwarfImpulse
 {
+    /// <summary>
+    /// Represents the positional and angular displacement applied to the target object.
+    /// </summary>
     public struct Displacement
     {
         public Vector3 Offset;

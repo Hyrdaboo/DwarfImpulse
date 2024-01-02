@@ -256,14 +256,6 @@ layer_1/tile_data = PackedInt32Array(-393227, 65538, 0, -393226, 65538, 0, -3932
 z_index = 1180
 zoom = Vector2(3, 3)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-offset_right = 257.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 12
-text = "Tilemap by: opengameart.org/users/vladikvt"
-
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("shakeDirector", "bulletMuzzles", "shootSfx", "bombMuzzle")]
 script = ExtResource("2_n11c5")
 speed = 100.0
@@ -300,3 +292,25 @@ volume_db = -6.291
 script = ExtResource("5_hauuo")
 Target = NodePath("../Camera2D")
 AmplitudeOverride = 0.2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 257.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 12
+text = "Tilemap by: opengameart.org/users/vladikvt"
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = -91.0
+offset_right = 214.0
+offset_bottom = -16.0
+grow_vertical = 0
+size_flags_vertical = 8
+text = "Press [LMB] to shoot bullets
+WASD to move
+[SPACE] to shoot a bomb"

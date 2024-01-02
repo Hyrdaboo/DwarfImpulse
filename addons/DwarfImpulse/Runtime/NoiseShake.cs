@@ -3,7 +3,15 @@ using System;
 
 namespace DwarfImpulse
 {
-    public class PerlinShake : ShakePreset
+    /// <summary>
+    /// Applies shake to the target based on values sampled from noise.
+    /// Useful for longer shakes.
+    /// <para>
+    /// Use the <see cref="CreateWithNoise(FastNoiseLite)"/> method to
+    /// create a new instance of this preset.
+    /// </para>
+    /// </summary>
+    public class NoiseShake : ShakePreset
     {
         private FastNoiseLite noise;
         private Vector3 offsetAmount;
@@ -12,43 +20,56 @@ namespace DwarfImpulse
 
         private float offset;
 
-        private PerlinShake() { }
+        private NoiseShake() { }
 
-        public static PerlinShake CreateWithNoise(FastNoiseLite noise)
+        /// <summary>
+        /// Creates a new instance of this preset and initializes its noise
+        /// </summary>
+        public static NoiseShake CreateWithNoise(FastNoiseLite noise)
         {
             if (noise == null)
                 throw new ArgumentNullException("Noise for PerlinShake cannot be Null");
 
-            PerlinShake shake = new PerlinShake();
+            NoiseShake shake = new NoiseShake();
             shake.noise = noise;
             return shake;
         }
 
-        public PerlinShake WithOffsetAmount(Vector3 offsetAmount)
+        /// <summary>
+        /// Sets the amount of positional offset applied to target.
+        /// </summary>
+        public NoiseShake WithOffsetAmount(Vector3 offsetAmount)
         {
             this.offsetAmount = offsetAmount;
             return this;
         }
 
-        public PerlinShake WithEulersAmount(Vector3 eulerAnglesAmount)
+        /// <summary>
+        /// Sets the amount of angular offset applied to target.
+        /// </summary>
+        public NoiseShake WithEulersAmount(Vector3 eulerAnglesAmount)
         {
             this.eulerAnglesAmount = eulerAnglesAmount;
             return this;
         }
 
-        public PerlinShake WithScrollSpeed(float noiseScrollSpeed)
+        /// <summary>
+        /// Sets the speed at which the noise is being scrolled, effectively acting as additional frequency.
+        /// </summary>
+        /// <param name="noiseScrollSpeed">The scroll speed.</param>
+        public NoiseShake WithScrollSpeed(float noiseScrollSpeed)
         {
             this.noiseScrollSpeed = noiseScrollSpeed;
             return this;
         }
 
-        public PerlinShake WithDuration(float duration)
+        public NoiseShake WithDuration(float duration)
         {
             DurationLeft = duration;
             return this;
         }
 
-        public PerlinShake WithEnvelope(Envelope envelope)
+        public NoiseShake WithEnvelope(Envelope envelope)
         {
             Envelope = envelope;
             return this;

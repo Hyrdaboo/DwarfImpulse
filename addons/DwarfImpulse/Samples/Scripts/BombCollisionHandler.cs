@@ -7,7 +7,7 @@ public partial class BombCollisionHandler : ProjectileCollisionHandler
 
     protected override void OnCollisionEnter()
     {
-        var preset = PerlinShake.CreateWithNoise(noise)
+        var preset = NoiseShake.CreateWithNoise(noise)
                 .WithOffsetAmount(new Vector3(25, 25, 0))
                 .WithEnvelope(new Envelope(10, 1, 0.6f, Degree.Quadratic))
                 .WithDuration(1.0f);

@@ -3,12 +3,30 @@ using System.Collections.Generic;
 
 namespace DwarfImpulse
 {
+    /// <summary>
+    /// Applies shakes to the target object in 2D.
+    /// 
+    /// <para>When the <see cref="ShakeDirector3D.Shake(ShakePreset)"/> method is called, 
+    /// it stores the shake in the list of active shakes and applies 
+    /// displacement to the target object until the specified time runs 
+    /// out, at which point the shake preset is automatically cleared.
+    /// Additionally, <see cref="Envelope"/> is applied to the output
+    /// Displacement of all shakes.
+    /// </para>
+    /// </summary>
     [GlobalClass]
     public partial class ShakeDirector2D : Node2D
     {
         private Node2D target;
         private float amplitudeOverride = 1.0f;
 
+        /// <summary>
+        /// The object targeted for shaking.
+        /// <para>
+        /// <strong>Note:</strong> You can't change the target while there are 
+        /// active shakes running.
+        /// </para>
+        /// </summary>
         [Export]
         public Node2D Target
         {
@@ -22,6 +40,14 @@ namespace DwarfImpulse
             }
         }
 
+
+        /// <summary>
+        /// Scales all shakes by the specified amount. 
+        /// <para>
+        /// Setting this to, for example, 2 means all shakes will be twice as strong,
+        /// and 0 means no shake will take place. Negative values are ignored
+        /// </para>
+        /// </summary>
         [Export]
         public float AmplitudeOverride
         {
@@ -79,12 +105,19 @@ namespace DwarfImpulse
             displacementLastFrame = disp;
         }
 
+        /// <summary>
+        /// Starts a new shake event.
+        /// </summary>
+        /// <param name="preset">The shake preset to be used for shaking.</param>
         public void Shake(ShakePreset preset)
         {
             if (target == null) return;
             activeShakes.Add(preset);
         }
 
+        /// <summary>
+        /// Terminates all currently active shakes
+        /// </summary>
         public void TerminateAll()
         {
             activeShakes.Clear();

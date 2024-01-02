@@ -40,7 +40,7 @@ public partial class ExplosionController : GpuParticles3D
         if (Input.IsActionJustPressed("Jump") && canFire)
         {
             canFire = false;
-            shakeDirector.Shake(PerlinShake.CreateWithNoise(noise)
+            shakeDirector.Shake(NoiseShake.CreateWithNoise(noise)
                 .WithDuration((float)Lifetime)
                 .WithScrollSpeed(1200) //the speed at which the noisemap is scrolled (basically frequency)
                 .WithEnvelope(new Envelope(attack, sustain, decay, Degree.Quadratic))

@@ -39,7 +39,7 @@ public partial class FootstepShake : Node3D
 
         if (onGround && !onGroundLastFrame)
         {
-            var preset = PerlinShake.CreateWithNoise(noise)
+            var preset = NoiseShake.CreateWithNoise(noise)
                 .WithDuration(1.0f)
                 .WithScrollSpeed(1000) //the speed at which the noisemap is scrolled (basically frequency)
                 .WithEnvelope(new Envelope(10.0f, 2.0f, 0.35f, Degree.Quadratic))
