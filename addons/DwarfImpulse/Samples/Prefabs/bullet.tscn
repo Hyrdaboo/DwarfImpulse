@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwxqy0i8exv1a"]
+
+[ext_resource type="Texture2D" uid="uid://cxip3dionmed5" path="res://icon.svg" id="1_8i8wx"]
+[ext_resource type="Script" path="res://addons/DwarfImpulse/Samples/Scripts/BulletCollisionHandler.cs" id="2_wpkdm"]
+[ext_resource type="AudioStream" uid="uid://cuog115nb08ye" path="res://addons/DwarfImpulse/Samples/sfx/hitHurt.wav" id="3_vw81c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tms01"]
+radius = 5.09902
+
+[node name="Bullet" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.219608, 0, 1, 1)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("1_8i8wx")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+script = ExtResource("2_wpkdm")
+hitSound = ExtResource("3_vw81c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_tms01")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="OnBodyEntered"]

@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4h0rk3wu7k10"
+uid="uid://c7whjc12uwo3t"
 path.s3tc="res://.godot/imported/Hand_Remy_Body_Normal.png-0b4cb7e2d161acf05312c4b6d0ed4d36.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

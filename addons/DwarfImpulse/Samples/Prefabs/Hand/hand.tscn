@@ -13,7 +13,7 @@ roughness = 0.53
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b3xvg"]
 albedo_texture = ExtResource("2_miryi")
-metallic = 1.0
+metallic = 0.44
 
 [node name="Hand" instance=ExtResource("1_c4ly5")]
 
@@ -57,7 +57,7 @@ bones/23/rotation = Quaternion(0.35286, 0.611573, -0.44814, 0.548305)
 bones/23/scale = Vector3(1, 1, 1)
 
 [node name="LongSword" parent="Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.583651, 0.54186, -0.604763, 0.710677, 0.701153, -0.0576433, 0.392797, -0.463435, -0.794316, 0.555982, 1.08239, -0.454813)
+transform = Transform3D(-0.583652, 0.541861, -0.604762, 0.710677, 0.701153, -0.0576441, 0.392796, -0.463435, -0.794317, 0.555983, 1.08239, -0.454812)
 
 [node name="LongSword" parent="Armature/Skeleton3D/LongSword" index="0"]
 transform = Transform3D(1, 0, -2.98023e-08, 2.98023e-08, 1, 5.96046e-08, -2.98023e-08, 0, 1, 0, 0, 0)
