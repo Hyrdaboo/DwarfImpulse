@@ -10,7 +10,10 @@
 
 <strong>Note:</strong> this plugin is C# only.
 
-
+<img src="https://github.com/Hyrdaboo/DwarfImpulse/assets/67780454/bb8968b7-e338-4b34-9e30-30c87372c5c3" width = 100%>
+<img src="https://github.com/Hyrdaboo/DwarfImpulse/assets/67780454/bb83ff95-b634-49b7-b4eb-3546873ce843" width = 100%>
+<img src="https://github.com/Hyrdaboo/DwarfImpulse/assets/67780454/9b26a7e5-35d3-4474-9d58-840b7b4fcbf5" width = 100%>
+<img src="https://github.com/Hyrdaboo/DwarfImpulse/assets/67780454/cde7dfe5-ee34-4072-b322-58aeadbead73" width = 100%>
 
 <h3>Features:</h3>
 
@@ -153,3 +156,5 @@ preset.SpatialAttenuation.ShakeSource = GlobalPosition; // the global position o
 
 shakeDirector.Shake(preset);
 ```
+
+<i>This project was inspired by <a href="https://github.com/gasgiant/Camera-Shake">gasgiant</a></i>
