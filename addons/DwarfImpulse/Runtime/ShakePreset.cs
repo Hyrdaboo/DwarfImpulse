@@ -60,6 +60,12 @@ namespace DwarfImpulse
             duration -= delta;
         }
 
+        /// <summary>
+        /// Every shake preset must implement this method. This method 
+        /// is called every frame during a camera shake event.
+        /// </summary>
+        /// <param name="delta">The time elapsed since the last frame.</param>
+        /// <returns>The position and rotation of the target object at a single frame of shake</returns>
         internal abstract Displacement ExecuteShake(float delta);
     }
 }
