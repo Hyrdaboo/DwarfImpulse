@@ -19,6 +19,21 @@ namespace DwarfImpulse
     {
         private Node2D target;
         private float amplitudeOverride = 1.0f;
+        private bool isGlobal = false;
+
+        public ShakeDirector2D() { }
+
+        /// <summary>
+        /// Setting the optional param isGlobal to true will make this node
+        /// the child of the root node instead of the current scene. If your target
+        /// is local to the current scene and you want to make ShakeDirector global
+        /// make sure you set the target every time you change or reload scenes or else the target
+        /// will be invalid.
+        /// </summary>
+        public ShakeDirector2D(bool isGlobal)
+        {
+            this.isGlobal = isGlobal;
+        }
 
         /// <summary>
         /// The object targeted for shaking.
@@ -64,9 +79,10 @@ namespace DwarfImpulse
 
         private void AfterReady()
         {
-            Node currentScene = GetTree().CurrentScene;
+            Node currentScene = isGlobal ? GetTree().Root : GetTree().CurrentScene;
             Reparent(currentScene);
             currentScene.MoveChild(this, currentScene.GetChildCount() - 1);
+            currentScene.ChildEnteredTree += (node) => currentScene.MoveChild(this, currentScene.GetChildCount() - 1);
         }
 
         Displacement displacementLastFrame;

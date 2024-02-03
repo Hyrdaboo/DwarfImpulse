@@ -256,13 +256,14 @@ layer_1/tile_data = PackedInt32Array(-393227, 65538, 0, -393226, 65538, 0, -3932
 z_index = 1180
 zoom = Vector2(3, 3)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("shakeDirector", "bulletMuzzles", "shootSfx", "bombMuzzle")]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("shakeDirector", "muzzle1", "muzzle2", "shootSfx", "bombMuzzle")]
 script = ExtResource("2_n11c5")
 speed = 100.0
 stopSpeed = 200.0
 shakeDirector = NodePath("../ShakeDirector2D")
 bullet = ExtResource("3_o0i1j")
-bulletMuzzles = [NodePath("bulletMuzzle1"), NodePath("bulletMuzzle2")]
+muzzle1 = NodePath("bulletMuzzle1")
+muzzle2 = NodePath("bulletMuzzle2")
 shootSfx = NodePath("AudioStreamPlayer")
 bomb = ExtResource("4_k2ymt")
 bombMuzzle = NodePath("bombMuzzle")

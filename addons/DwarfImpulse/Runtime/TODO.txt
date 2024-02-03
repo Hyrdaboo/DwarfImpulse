@@ -1,0 +1,2 @@
+* Refactor NoiseShake and BounceShake classes(BuilderPattern implementation is wrong)
+* Refactor ShakeDirectors. Both version should inherit from a base class

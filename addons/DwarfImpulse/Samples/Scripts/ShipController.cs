@@ -10,7 +10,8 @@ public partial class ShipController : CharacterBody2D
 	[ExportCategory("Projectile Handling")]
 	[ExportGroup("Bullet")]
 	[Export] private PackedScene bullet;
-	[Export] private Array<Node2D> bulletMuzzles;
+	[Export] private Node2D muzzle1;
+	[Export] private Node2D muzzle2;
 	[Export] private float bulletFireRate = 0.35f;
 	[Export] private AudioStreamPlayer shootSfx;
 	[ExportGroup("Bomb")]
@@ -63,6 +64,9 @@ public partial class ShipController : CharacterBody2D
 			bombTimer.Start();
 			instantiateProjectile(bomb, bombMuzzle);
 		}
+
+		if (Input.IsActionJustPressed("Reload"))
+			GetTree().ReloadCurrentScene();
     }
 
 	private void fireBullet()
@@ -70,10 +74,8 @@ public partial class ShipController : CharacterBody2D
         if (Input.IsActionPressed("Fire1"))
         {
             shootSfx.Play();
-            foreach (var muzzle in bulletMuzzles)
-            {
-				instantiateProjectile(bullet, muzzle);
-            }
+            instantiateProjectile(bullet, muzzle1);
+            instantiateProjectile(bullet, muzzle2);
         }
     }
 
