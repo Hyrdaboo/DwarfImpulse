@@ -70,6 +70,10 @@ public partial class ShakeController : Camera3D
 }
 ```
 
+> [!WARNING]
+> Placing ShakeDirector in Autoload is advised against but if you need to do so use the ```ShakeDirector(bool isGlobal)``` constructor
+> and set it to true. This will ensure the node always stays in the root scene.
+
 
 * Add this script to a Node3D, and then initialize its parameters.
 
@@ -91,6 +95,7 @@ shakeDirector.Shake(new BounceShake()
     .WithStartDir(new Vector3(1, 1, 0))
     .WithFrequency(5.0f));
 ```
+
 ### Demos
 There are a couple of demos you can take a look at and learn from.
 * Inside the _addons_ folder navigate to _Samples_>_Scenes_. Here you will find the four available demos.
