@@ -44,7 +44,7 @@ public partial class ExplosionController : GpuParticles3D
                 .WithDuration((float)Lifetime)
                 .WithScrollSpeed(1200) //the speed at which the noisemap is scrolled (basically frequency)
                 .WithEnvelope(new Envelope(attack, sustain, decay, Degree.Quadratic))
-                .WithEulersAmount(shakeRotationAmount));
+                .WithEulersAmount(shakeRotationAmount), () => GD.Print("Done!"));
             Restart();
 
             explosionLight.Visible = true;

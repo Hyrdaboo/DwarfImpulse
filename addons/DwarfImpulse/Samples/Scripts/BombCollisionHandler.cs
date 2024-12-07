@@ -18,7 +18,7 @@ public partial class BombCollisionHandler : ProjectileCollisionHandler
         audioPlayer.Finished += audioPlayer.QueueFree;
         audioPlayer.Play();
 
-        shakeDirector.Shake(preset);
+        shakeDirector.Shake(preset, () => GD.Print("Bomb finished"));
         Owner.QueueFree();
     }
 }

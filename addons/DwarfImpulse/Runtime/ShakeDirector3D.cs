@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 
 namespace DwarfImpulse
@@ -69,7 +70,7 @@ namespace DwarfImpulse
             set => amplitudeOverride = Mathf.Max(0, value);
         }
 
-        private List<ShakePreset> activeShakes = new List<ShakePreset>();
+        private List<Tuple<ShakePreset, Action>> activeShakes = new();
 
         public override void _Ready()
         {
@@ -97,10 +98,11 @@ namespace DwarfImpulse
             Displacement disp = Displacement.Zero;
             for (int i = 0; i < activeShakes.Count; i++)
             {
-                ShakePreset shake = activeShakes[i];
+                ShakePreset shake = activeShakes[i].Item1;
                 shake.Update(fDelta);
                 if (!shake.IsActive)
                 {
+                    activeShakes[i].Item2?.Invoke();
                     activeShakes.RemoveAt(i);
                     continue;
                 }
@@ -122,10 +124,11 @@ namespace DwarfImpulse
         /// Starts a new shake event.
         /// </summary>
         /// <param name="preset">The shake preset to be used for shaking.</param>
-        public void Shake(ShakePreset preset)
+        /// <param name="onComplete">Executed when the shake is finished.</param>
+        public void Shake(ShakePreset preset, Action onComplete = null)
         {
             if (target == null) return;
-            activeShakes.Add(preset);
+            activeShakes.Add(new(preset, onComplete));
         }
 
         /// <summary>
